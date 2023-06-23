@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { COLORS } from '../../constants';
 import Icon from '../Icon';
-import { getDisplayedValue, getSelectedOption, getSelectWidth } from './Select.helpers';
+import { getDisplayedValue } from './Select.helpers';
 
 const Select = ({ label, value, onChange, children }) => {
   const displayedValue = getDisplayedValue(value, children);
