@@ -16,30 +16,7 @@ export function getSelectedOption(value, children) {
 
 export function getSelectWidth(option) {
   const optionText = option.props.children;
-  //
-  // const tempSelect = document.createElement('select');
-  // tempSelect.style.display = 'block';
-  // tempSelect.style.position = 'absolute';
-  // tempSelect.style.top = '0';
-  // tempSelect.style.left = '-9999px';
-  // tempSelect.style.visibility = 'hidden';
-  // tempSelect.style.paddingLeft = '16px';
-  // tempSelect.style.paddingRight = '52px';
-  // tempSelect.style.boxSizing = 'border-box';
-  // tempSelect.style.fontFamily = "'Roboto', sans-serif";
-  // tempSelect.style.fontSize = `${16 / 16}rem`;
-  // tempSelect.style.appearance = 'none'; 
-  //
-  // const tempOption = document.createElement('option');
-  // tempOption.textContent = optionText;
-  //
-  // tempSelect.append(tempOption);
-  //
-  // document.body.append(tempSelect);
-  //
-  // const selectWidth = tempSelect.getBoundingClientRect().width;
-  //
-  // tempSelect.remove(); 
+  
   const tempElement = document.createElement('span');
   tempElement.style.display = 'block';
   tempElement.style.position = 'absolute';
