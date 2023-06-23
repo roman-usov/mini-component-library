@@ -8,34 +8,62 @@ import { getDisplayedValue, getSelectedOption, getSelectWidth } from './Select.h
 const Select = ({ label, value, onChange, children }) => {
   const displayedValue = getDisplayedValue(value, children);
   
-  const selectWidth = getSelectWidth(getSelectedOption(value, children));
-
   return (
-    <Wrapper value={value} onChange={onChange} style={{width: `${selectWidth}px`}}>
-      {children}
+    <Wrapper>
+      <NativeSelect value={value} onChange={onChange}>
+        {children}
+      </NativeSelect>
+
+      <PresentationLayer>
+        {displayedValue}
+        <IconWrapper style={{ '--size': 24 + 'px' }}><Icon id="chevron-down" strokeWidth={2} size={24}/></IconWrapper>
+      </PresentationLayer>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.select`
-  display: block;
-  font-family: 'Roboto', sans-serif;
+const Wrapper = styled.div`
+  position: relative;
+  width: max-content;
+`;
+
+const NativeSelect = styled.select`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  appearance: none;
+`;
+
+const PresentationLayer = styled.div`
+  padding: 12px 52px 12px 16px;
   font-size: ${16 / 16}rem;
-  color: ${COLORS.gray700};
-  padding: 12px 24px 12px 12px;
-  box-sizing: border-box;
   background-color: ${COLORS.transparentGray15};
   border-radius: 8px;
-  border: 1px solid transparent;
-  transition: all 0.3s;
+  color: ${COLORS.gray700};
   
-  &:focus {
-    outline: 2px solid;
+  ${NativeSelect}:focus + & {
+    outline: 1px dotted #212121;
+    outline: 2px auto -webkit-focus-ring-color;
   }
-  
-  &:hover {
-    color: black;
+
+  ${NativeSelect}:hover + & {
+   color: black; 
   }
 `;
+
+const IconWrapper = styled.div`
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  top: 0;
+  bottom: 0;
+  right: 10px;
+  margin: auto;
+  pointer-events: none;
+`;
+
 
 export default Select;
